@@ -12,6 +12,9 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
+            </li>
             <li class="nav-item" (click)="logout()">
               <a class="nav-link">Logout</a>
             </li>
@@ -32,7 +35,7 @@
           [(ngModel)]="model.username"
           class="form-control me-2" 
           type="text" 
-          placeholder="Username">
+          placeholder="Username"> 
           <input 
           name="password"
           [(ngModel)]="model.password"

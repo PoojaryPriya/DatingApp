@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +12,9 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   registerMode=false;
   users:any;
+  model:any={}
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,public accountService:AccountService,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -32,5 +36,16 @@ export class HomeComponent implements OnInit {
   cancelRegisterMode(event:boolean){
     this.registerMode=event;
   }
+
+  login() {
+    this.accountService.login(this.model).subscribe({
+      next:_=>this.router.navigateByUrl('/members'),
+      error:error=>this.toastr.error(error.error)
+    })
+  }
+
+  // clickFunction(event:any){
+    
+  // }
 
 }
