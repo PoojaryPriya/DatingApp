@@ -14,20 +14,21 @@ export class HomeComponent implements OnInit {
   users:any;
   model:any={}
 
-  constructor(private http:HttpClient,public accountService:AccountService,private router:Router,private toastr:ToastrService) { }
+  constructor() { }
+  // private http:HttpClient,public accountService:AccountService,private router:Router,private toastr:ToastrService
 
   ngOnInit(): void {
-    this.getUser();
+    // this.getUser();
   }
 
-  getUser() {
-    this.http.get("https://localhost:5001/api/users").subscribe({
-      next: response => this.users=response,
-      error: error=>console.error(),
-      complete: ()=> console.log('Request has completed')
+  // getUser() {
+  //   this.http.get("https://localhost:5001/api/users").subscribe({
+  //     next: response => this.users=response,
+  //     error: error=>console.error(),
+  //     complete: ()=> console.log('Request has completed')
       
-    })
-  }
+  //   })
+  // }
 
   registerToggle() {
     this.registerMode=!this.registerMode;
@@ -37,12 +38,12 @@ export class HomeComponent implements OnInit {
     this.registerMode=event;
   }
 
-  login() {
-    this.accountService.login(this.model).subscribe({
-      next:_=>this.router.navigateByUrl('/members'),
-      error:error=>this.toastr.error(error.error)
-    })
-  }
+  // login() {
+  //   this.accountService.login(this.model).subscribe({
+  //     next:_=>this.router.navigateByUrl('/members'),
+  //     error:error=>this.toastr.error(error.error)
+  //   })
+  // }
 
   // clickFunction(event:any){
     
